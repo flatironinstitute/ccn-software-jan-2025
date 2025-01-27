@@ -226,7 +226,7 @@ jupyter lab
 
   (On Windows, replace `$(realpath ..)` with the path to the `ccn-software-jan-2025` directory.)
 - We have noticed jupyter notebooks behaving a bit odd in Safari --- if you are running/editing jupyter in Safari and the behavior seems off (scrolling not smooth, lag between creation and display of cells), try a different browser. We've had better luck with Firefox or using the arrow keys to navigate between cells.
-- On **Windows + conda**: if after installing conda, the path are not set correctly, you may encounter this error message: 
+- On **Windows + conda**: if after installing conda the path are not correctly set, you may encounter this error message: 
    ```
    conda : The term 'conda' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
    ```
@@ -261,6 +261,12 @@ Some usage notes:
 - This is important because if you restart the image, **you will lose all data and progress**.
 - The binder will be shutdown automatically after 1 day of inactivity or 7 days of total usage. Data will not persist after the binder instance shuts down, so **please download any notebooks** you want to keep.
 - I will destroy this instance in 2 weeks. You can download your notebooks to keep them after the fact.
+
+
+```{toctree}
+:titlesonly:
+can_you_read
+```
 
 ```{toctree}
 :glob:
