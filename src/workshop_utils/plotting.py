@@ -13,7 +13,7 @@ from nemos import _documentation_utils as doc_plots
 __all__ = ["plot_features", "animate_1d_convolution", "plot_head_direction_tuning_model", "plot_feature_mask",
            "plot_heatmap_cv_results", "plot_position_speed",
            "plot_position_speed_tuning", "plot_place_fields", "plot_pos_speed_bases", "visualize_intervals",
-           "plot_current_history_features", "current_injection_plot"]
+           "plot_current_history_features", "current_injection_plot", "plot_basis_filter"]
 
 def plot_features(
     input_feature: Union[nap.Tsd, nap.TsdFrame, nap.TsdTensor, NDArray],
@@ -702,3 +702,20 @@ def current_injection_plot(current: nap.Tsd, spikes: nap.TsGroup,
 
     resp_ax.legend(loc='upper center', bbox_to_anchor=(.5, -.4),
                    bbox_transform=zoom_axes[1].transAxes)
+
+
+def plot_basis_filter(basis, model, current_history_duration_sec=.2):
+    """Visualize the model's learned filter."""
+    fig, axes = plt.subplots(1, 4, figsize=(20, 5))
+    time, kernel = basis.evaluate_on_grid(200)
+    time *= current_history_duration_sec
+    axes[0].plot(time, kernel)
+    axes[0].set(title="Basis functions", xlabel="Time (sec)", ylabel="Amplitude (A.U.)")
+    axes[1].bar(np.arange(len(model.coef_)), model.coef_)
+    axes[1].set(title="Coefficient Weights", xlabel="Basis number")
+    axes[2].plot(time, kernel * model.coef_)
+    axes[2].set(title="Weighted basis functions", xlabel="Time (sec)")
+    axes[2].axhline(0, c='k', linestyle='--')
+    axes[3].plot(time, np.matmul(kernel, model.coef_))
+    axes[3].axhline(0, c='k', linestyle='--')
+    axes[3].set(title="Learned linear filter", xlabel="Time (sec)")
