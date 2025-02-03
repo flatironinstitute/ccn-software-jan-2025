@@ -1,16 +1,17 @@
 # ccn-software-jan-2025
 
-Materials for CCN software workshop at Flatiron, Jan 2025
+Materials for CCN software workshop at Flatiron, Winter 2025. The workshop was run twice, once on Jan 29 -- 31 ([github release](https://github.com/flatironinstitute/ccn-software-jan-2025/releases/tag/jan)), once on Feb 2 -- 4.
 
 We have a slack channel for communicating with attendees, if you haven't received an invitation, please send us a note!
 
 > [!INFO]
 > The rest of this README is for contributors to the workshop.
 
+## Building the site locally
+
 > [!WARNING]
 > For some reason, we need `jupyterlab < 4.3` in order to get the link highlighting working. There's a class, `.jp-ThemedContainer`, which removes the link styling. Possibly related to [this PR](https://github.com/jupyterlab/jupyterlab/pull/16519) or [this issue](https://github.com/jupyterlab/jupyterlab/issues/13493).
 
-## Building the site locally
 
 To build the site locally, clone this repo and install it in a fresh python 3.11 environment (`pip install -e .`). Then run `make -C docs html O="-T"` and open `docs/build/html/index.html` in your browser.
 
