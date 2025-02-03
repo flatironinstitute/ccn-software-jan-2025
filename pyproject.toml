@@ -53,6 +53,7 @@ dependencies = [
     "pooch",
     "fsspec",
     "numba>=0.60",
+    "numpy<2.2",
 ]
 
 # Configure package discovery for setuptools
